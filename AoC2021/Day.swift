@@ -65,6 +65,13 @@ extension Day {
         return true
     }
 
+    func run() {
+        log("running...")
+        let input : [T] = parse(filepath: "input/\(day)/input")
+        log("part one: \(partOne(input))")
+        log("part two: \(partTwo(input))")
+        log("done")
+    }
 }
 
 protocol StringInitializable {
