@@ -8,23 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		4291A0CA27572C4400C42CE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291A0C927572C4400C42CE3 /* main.swift */; };
+		4291A0D127573F3900C42CE3 /* Input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0D027573F0100C42CE3 /* Input */; };
+		4291A0E527573F9900C42CE3 /* Tests in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0E427573F8600C42CE3 /* Tests */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4291A0C427572C4400C42CE3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				4291A0D127573F3900C42CE3 /* Input in CopyFiles */,
+				4291A0E527573F9900C42CE3 /* Tests in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4291A0C627572C4400C42CE3 /* AoC2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AoC2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		4291A0C927572C4400C42CE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4291A0D027573F0100C42CE3 /* Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input; sourceTree = SOURCE_ROOT; };
+		4291A0E427573F8600C42CE3 /* Tests */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tests; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				4291A0C927572C4400C42CE3 /* main.swift */,
+				4291A0E427573F8600C42CE3 /* Tests */,
+				4291A0D027573F0100C42CE3 /* Input */,
 			);
 			path = AoC2021;
 			sourceTree = "<group>";
