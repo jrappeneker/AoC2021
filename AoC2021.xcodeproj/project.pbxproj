@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4291A0CA27572C4400C42CE3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291A0C927572C4400C42CE3 /* main.swift */; };
-		4291A0D127573F3900C42CE3 /* Input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0D027573F0100C42CE3 /* Input */; };
-		4291A0E527573F9900C42CE3 /* Tests in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0E427573F8600C42CE3 /* Tests */; };
+		4291A0D127573F3900C42CE3 /* input in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0D027573F0100C42CE3 /* input */; };
+		4291A0E527573F9900C42CE3 /* tests in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4291A0E427573F8600C42CE3 /* tests */; };
+		4291A0E727583FF200C42CE3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291A0E627583FF200C42CE3 /* Day.swift */; };
+		4291A0E92758400E00C42CE3 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291A0E82758400E00C42CE3 /* Day1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,8 +21,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				4291A0D127573F3900C42CE3 /* Input in CopyFiles */,
-				4291A0E527573F9900C42CE3 /* Tests in CopyFiles */,
+				4291A0D127573F3900C42CE3 /* input in CopyFiles */,
+				4291A0E527573F9900C42CE3 /* tests in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -29,8 +31,10 @@
 /* Begin PBXFileReference section */
 		4291A0C627572C4400C42CE3 /* AoC2021 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AoC2021; sourceTree = BUILT_PRODUCTS_DIR; };
 		4291A0C927572C4400C42CE3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		4291A0D027573F0100C42CE3 /* Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Input; sourceTree = SOURCE_ROOT; };
-		4291A0E427573F8600C42CE3 /* Tests */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tests; sourceTree = SOURCE_ROOT; };
+		4291A0D027573F0100C42CE3 /* input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = input; sourceTree = SOURCE_ROOT; };
+		4291A0E427573F8600C42CE3 /* tests */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = tests; sourceTree = SOURCE_ROOT; };
+		4291A0E627583FF200C42CE3 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		4291A0E82758400E00C42CE3 /* Day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +68,10 @@
 			isa = PBXGroup;
 			children = (
 				4291A0C927572C4400C42CE3 /* main.swift */,
-				4291A0E427573F8600C42CE3 /* Tests */,
-				4291A0D027573F0100C42CE3 /* Input */,
+				4291A0E82758400E00C42CE3 /* Day1.swift */,
+				4291A0E627583FF200C42CE3 /* Day.swift */,
+				4291A0E427573F8600C42CE3 /* tests */,
+				4291A0D027573F0100C42CE3 /* input */,
 			);
 			path = AoC2021;
 			sourceTree = "<group>";
@@ -128,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4291A0E727583FF200C42CE3 /* Day.swift in Sources */,
+				4291A0E92758400E00C42CE3 /* Day1.swift in Sources */,
 				4291A0CA27572C4400C42CE3 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
