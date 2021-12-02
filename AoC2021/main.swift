@@ -7,9 +7,6 @@
 
 import Foundation
 
-let days = [Day1()]
-
-for d in days {
-    d.test()
-    d.run()
-}
+let day = Day2()
+day.test()
+//day.run()
