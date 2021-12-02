@@ -9,4 +9,4 @@ import Foundation
 
 let day = Day2()
 day.test()
-//day.run()
+day.run()

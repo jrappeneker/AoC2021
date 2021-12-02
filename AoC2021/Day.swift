@@ -32,7 +32,7 @@ extension Day {
     
     func parse(filepath:String) -> [T] {
         let input = try! String(contentsOfFile: filepath)
-        return input.components(separatedBy: .newlines).compactMap(T.init)
+        return input.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).compactMap(T.init)
     }
     
     @discardableResult func test() -> Bool {
@@ -48,12 +48,16 @@ extension Day {
             let input : [T] = parse(filepath: folderPath+"input")
             let answers : [Int] = parseInt(filepath: folderPath+"answer")
             
-            if partOne(input) != answers[0] {
-                log("test \(f) part 1 FAILED")
+            let answerOne = partOne(input)
+            if answerOne != answers[0] {
+                log("test \(f) part 1 FAILED. Expected \(answers[0]), got \(answerOne)")
                 failed = true
-            } else if answers.count > 1 && partTwo(input) != answers[1] {
-                log("test \(f) part 2 FAILED")
-                failed = true
+            } else if answers.count > 1 {
+                let answerTwo = partTwo(input)
+                if answerTwo != answers[1] {
+                    log("test \(f) part 2 FAILED.  Expected \(answers[1]), got \(answerTwo)")
+                    failed = true
+                }
             }
             
         }
