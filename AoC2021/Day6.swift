@@ -21,17 +21,8 @@ struct Day6 : Day {
     
     func step(_ input:[Int]) -> [Int] {
         var populations = input
-        let temp = populations[0]
-        populations[0] = populations[1]
-        populations[1] = populations[2]
-        populations[2] = populations[3]
-        populations[3] = populations[4]
-        populations[4] = populations[5]
-        populations[5] = populations[6]
-        populations[6] = populations[7] + temp
-        populations[7] = populations[8]
-        populations[8] = temp
-        
+        populations[7] += populations[0]
+        populations.rotate(toStartAt: 1)
         return populations
     }
     
