@@ -52,14 +52,14 @@ extension Day {
             if answerOne != answers[0] {
                 log("test \(f) part 1 FAILED. Expected \(answers[0]), got \(answerOne)")
                 failed = true
-            } else if answers.count > 1 {
+            }
+            if answers.count > 1 {
                 let answerTwo = partTwo(input)
                 if answerTwo != answers[1] {
                     log("test \(f) part 2 FAILED.  Expected \(answers[1]), got \(answerTwo)")
                     failed = true
                 }
             }
-            
         }
         if !failed {
             log("all tests passed")
