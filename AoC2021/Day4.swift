@@ -35,33 +35,13 @@ struct Game : StringInitializable {
         boardSets = tempBoardSets
     }
     
-    mutating func drawNext() -> Int {
-        while index < draws.count {
-            let value = draws[index]
-            index += 1
-            
-            // Check each board for the value
-            for i in 0..<boards.count {
-                if boardSets[i].contains(value) {
-                    marked[i].insert(boards[i].firstIndex(of: value)!)
-                    if marked[i].count >= 5 {
-                        if isSolved(marked[i]) {
-                            return i
-                        }
-                    }
-                }
-            }
-        }
-        return -1
-    }
-    
-    mutating func drawLast() -> (Int, Int) {
+    mutating func draw() -> (Int, Int, Int, Int) {
         var lastSolved = -1
         var lastMarked = -1
+        var firstSolved = -1
+        var firstMarked = -1
         var solved : Set<Int> = []
-        marked = Array(repeating: [], count: boards.count)
-        index = 0
-        
+
         while index < draws.count {
             let value = draws[index]
             index += 1
@@ -72,6 +52,10 @@ struct Game : StringInitializable {
                     marked[i].insert(boards[i].firstIndex(of: value)!)
                     if marked[i].count >= 5 {
                         if isSolved(marked[i]) && !solved.contains(i) {
+                            if solved.count == 0 {
+                                firstSolved = i
+                                firstMarked = index
+                            }
                             lastSolved = i
                             lastMarked = index
                             solved.insert(i)
@@ -80,9 +64,9 @@ struct Game : StringInitializable {
                 }
             }
         }
-        return (lastSolved, lastMarked)
+        return (firstSolved, firstMarked, lastSolved, lastMarked)
     }
-    
+        
     let allRows = stride(from: 0, to: 5, by: 1).map { i in
         return Set(stride(from: i*5, to: i*5+5, by: 1))
     }
@@ -104,18 +88,8 @@ struct Game : StringInitializable {
         
         return false
     }
-    
-    func score(_ board:Int) -> Int {
-        let total = boards[board].enumerated().filter { i, _ in
-            return !marked[board].contains(i)
-        }.reduce(0) { partialResult, e in
-            return partialResult + e.element
-        }
         
-        return total * draws[index-1]
-    }
-    
-    func scoreLast(_ board:Int, lastMarked:Int) -> Int {
+    func score(_ board:Int, lastMarked:Int) -> Int {
         let finalMarked = Set(draws[0..<lastMarked])
         let total = boards[board].enumerated().filter { i, _ in
             return !finalMarked.contains(boards[board][i])
@@ -126,26 +100,66 @@ struct Game : StringInitializable {
     }
 }
 
-struct Day4 : Day {
+class Day4 : Day {
     let day = 4
     typealias T = Game
     
-    func parse(filepath: String) -> [Game] {
-        let input = try! String(contentsOfFile: filepath)
-        return [Game(input)!]
+    var (firstSolved, firstMarked, lastSolved, lastMarked) : (Int, Int, Int, Int) = (0,0,0,0)
+        
+    func run() {
+        log("running...")
+        let input = try! String(contentsOfFile: "input/\(day)/input")
+        var g = Game(input)!
+        (firstSolved, firstMarked, lastSolved, lastMarked) = g.draw()
+        log("part one: \(partOne([g]))")
+        log("part two: \(partTwo([g]))")
+        log("done")
     }
     
-    func partOne(_ input: [Game]) -> Int {
-        var g = input[0]
-        let board = g.drawNext()
+    @discardableResult func test() -> Bool {
+        log("running tests...")
+
+        let folders = try! FileManager.default.contentsOfDirectory(atPath: "tests/\(day)")
+    
+        var failed = false
         
-        return g.score(board)
+        folders.forEach { f in
+            let folderPath = "tests/\(day)/\(f)/"
+            
+            let input = try! String(contentsOfFile: folderPath+"input")
+            var g = Game(input)!
+            (firstSolved, firstMarked, lastSolved, lastMarked) = g.draw()
+            
+            let answers : [Int] = parseInt(filepath: folderPath+"answer")
+            
+            let answerOne = partOne([g])
+            if answerOne != answers[0] {
+                log("test \(f) part 1 FAILED. Expected \(answers[0]), got \(answerOne)")
+                failed = true
+            }
+            if answers.count > 1 {
+                let answerTwo = partTwo([g])
+                if answerTwo != answers[1] {
+                    log("test \(f) part 2 FAILED.  Expected \(answers[1]), got \(answerTwo)")
+                    failed = true
+                }
+            }
+        }
+        if !failed {
+            log("all tests passed")
+        } else {
+            log("tests complete")
+        }
+        return true
+    }
+
+    
+    func partOne(_ input: [Game]) -> Int {
+        return input[0].score(firstSolved, lastMarked: firstMarked)
     }
     
     func partTwo(_ input: [Game]) -> Int {
-        var g = input[0]
-        let board = g.drawLast()
-        return g.scoreLast(board.0, lastMarked:board.1)
+        return input[0].score(lastSolved, lastMarked: lastMarked)
     }
     
 }
