@@ -7,6 +7,6 @@
 
 import Foundation
 
-let day = Day6()
+let day = Day7()
 day.test()
 day.run()
